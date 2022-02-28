@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Modeli i Animacija prezentacija</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-video="media/compressed_clover_intro.m4v" lineno="0" class="slide " data-line="0" data-h="0" data-v="0">
+        </section><section lineno="2" class="slide " data-line="2" data-h="1" data-v="0">
+        <h2 class="mume-header" id="clover-shader">Clover Shader</h2>
+        
+        <h3 class="mume-header" id="made-in-unreal-engine">Made in unreal Engine</h3>
+        
+        </section><section lineno="5" class="slide " data-line="5" data-h="2" data-v="0">
+        <p>Textures have been made using Photoshop and Substance alchemists ability to generate normal and roughness maps.<br>
+        A custom emission channel was made in photoshop<br>
+        <img src="media/textures512.png" alt></p>
+        </section><section lineno="10" class="slide " data-line="10" data-h="3" data-v="0">
+        <p>The model was made and unwrapped in Blender<br>
+        <img src="media/model_and_unwrap.png" alt></p>
+        </section><section lineno="14" class="slide " data-line="14" data-h="4" data-v="0">
+        <p>The Shader uses a Surface, Default Lit Model with a Masked Blend Mode to round out the corners on the clover.</p>
+        </section><section lineno="17" class="slide " data-line="17" data-h="5" data-v="0">
+        <p>Reflection calculations are shown below. They are later multiplied with the emission map to give the clover glow<br>
+        <img src="media/reflections.png" alt></p>
+        </section><section lineno="21" class="slide " data-line="21" data-h="6" data-v="0">
+        <p>The code bellow calculates the distance of every pixel from an imaginary line spanning between the camera and the sun</p>
+        <pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token function">abs</span><span class="token punctuation">(</span>
+            lightdir<span class="token punctuation">.</span>x<span class="token operator">*</span>worldpos<span class="token punctuation">.</span>y <span class="token operator">-</span> lightdir<span class="token punctuation">.</span>y<span class="token operator">*</span>worldpos<span class="token punctuation">.</span>x 
+            <span class="token operator">+</span> camerapos<span class="token punctuation">.</span>x<span class="token operator">*</span><span class="token punctuation">(</span>camerapos<span class="token punctuation">.</span>y <span class="token operator">+</span> lightdir<span class="token punctuation">.</span>y<span class="token punctuation">)</span> 
+            <span class="token operator">-</span> camerapos<span class="token punctuation">.</span>y<span class="token operator">*</span><span class="token punctuation">(</span>camerapos<span class="token punctuation">.</span>x <span class="token operator">+</span> lightdir<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </pre></section><section lineno="31" class="slide " data-line="31" data-h="7" data-v="0">
+        <p>Lastly I added a texture that rotates in screenspace to add the mesmerizing light effect<br>
+        <img src="media/screenspace_rotation.png" alt></p>
+        </section><section data-background-video="media/compressed_clover_pan.m4v" lineno="35" class="slide " data-line="35" data-h="8" data-v="0">
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
